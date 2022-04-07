@@ -1,11 +1,24 @@
 Package: AnGil
-Type: Package
-Title: Test (Title Case)
+Title: Example analytics package
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author@R: 
+  person("Edward","Gillian", email = "edwardjgillian@gmail.com", role = c("aut", "cre")
+Description: Example analytics package
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    dplyr,
+    tidyr,
+    fontawesome,
+    ggplot2,
+    stringr,
+    magrittr,
+    DT,
+    rlang,
+    rmarkdown,
+    shiny,
+    shinythemes,
+    shinyWidgets
