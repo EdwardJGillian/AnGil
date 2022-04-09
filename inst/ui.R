@@ -39,10 +39,12 @@ ui <- fluidPage(title = "Analytics - Aggregation",
                                       DT::dataTableOutput("data_table"))
                             ),
                             tabPanel("Basic Variant", icon = icon("object-group"),
-                                                           shinycssloaders::withSpinner(
-                                                             DT::dataTableOutput("basic_var_table"))
+                                     numericInput("pcnt","Percentage", value = 1, min = 1),
+                                     actionButton('b_var_calc' ,'Basic Variant Calculate', icon("paper-plane"),
+                                                  style = "color: #fff; background-color: #337ab7; border-color: #2e6da4"),
+                                     br(),
+                                                      DT::dataTableOutput("basic_var_table"))
                             )
-                )
 
                 #
                 # )
