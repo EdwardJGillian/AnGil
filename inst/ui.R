@@ -3,7 +3,7 @@ library(shinythemes)
 library(fontawesome)
 library(shinycssloaders)
 
-ui <- fluidPage(title = "Analytics - Aggregration",
+ui <- fluidPage(title = "Analytics - Aggregation",
                 theme = shinytheme("spacelab"),
                 # check if tags are working
                 tags$head(tags$style(
