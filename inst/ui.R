@@ -34,9 +34,16 @@ ui <- fluidPage(title = "Analytics - Aggregration",
                   )
                 )),
                 tabsetPanel(type = "pills",
-                            tabPanel("Numeric Data", icon = icon("table"),
+                            tabPanel("Original Numeric Data", icon = icon("table"),
                                      shinycssloaders::withSpinner(
                                       DT::dataTableOutput("data_table"))
+                            ),
+                            tabPanel("Basic Variant", icon = icon("object-group"),
+                                                           shinycssloaders::withSpinner(
+                                                             DT::dataTableOutput("basic_var_table"))
                             )
                 )
+
+                #
+                # )
 )
