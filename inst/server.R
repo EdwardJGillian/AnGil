@@ -55,4 +55,29 @@ server <- function(input, output, sessions) {
         formatRound(columns = c('a', 'b', 'c', 'd', 'e', 'res'), digits = 3)
     })
   })
+
+  observeEvent(input$adv_var_calc, {
+    req(input$pcnt)
+    req(input$adv_var_calc)
+    output$adv_var_table <- DT::renderDataTable({
+      # load table for display
+      df4 <- original_data()
+      # calculate and aggregate data
+      u_value <- input$u_value
+      df4 <- AnGil::advanced_variant_calc(df4, u_value)
+      DT::datatable(df4,
+                    colnames = c("Column A",
+                                 "Column B",
+                                 "Column C",
+                                 "Column D",
+                                 "Column E",
+                                 "Aggregation"),
+                    filter = 'top',
+                    options = list(
+                      lengthMenu = list(c(5, 15, -1), c('5', '15', 'All')),
+                      pageLength = 5),
+                    rownames = FALSE) %>%
+        formatRound(columns = c('a', 'b', 'c', 'd', 'e', 'res'), digits = 3)
+    })
+  })
 }
