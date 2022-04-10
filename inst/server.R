@@ -31,53 +31,66 @@ server <- function(input, output, sessions) {
       formatRound(columns = c('a', 'b', 'c', 'd', 'e', 'res'), digits = 3)
   })
 
-  observeEvent(input$b_var_calc, {
+  status <- reactiveVal()
+
+  out_base <- eventReactive(input$b_var_calc,{
+    # load table for display
+    df3 <- original_data()
+    # calculate and aggregate data
     req(input$pcnt)
-    req(input$b_var_calc)
-    output$basic_var_table <- DT::renderDataTable({
-      # load table for display
-      df3 <- original_data()
-      # calculate and aggregate data
-      pcnt <- input$pcnt
-      df3 <- AnGil::basic_variant_calc(df3, pcnt)
-      DT::datatable(df3,
-                    colnames = c("Column A",
-                                 "Column B",
-                                 "Column C",
-                                 "Column D",
-                                 "Column E",
-                                 "Aggregation"),
-                    filter = 'top',
-                    options = list(
-                      lengthMenu = list(c(5, 15, -1), c('5', '15', 'All')),
-                      pageLength = 5),
-                    rownames = FALSE) %>%
-        formatRound(columns = c('a', 'b', 'c', 'd', 'e', 'res'), digits = 3)
-    })
+    req(input$u_value)
+    pcnt <- input$pcnt
+    u_value <- input$u_value
+    df3 <- AnGil::basic_variant_calc(df3, pcnt, u_value)
+    DT::datatable(df3,
+                  colnames = c("Column A",
+                               "Column B",
+                               "Column C",
+                               "Column D",
+                               "Column E",
+                               "Aggregation"),
+                  filter = 'top',
+                  options = list(
+                    lengthMenu = list(c(5, 15, -1), c('5', '15', 'All')),
+                    pageLength = 5),
+                  rownames = FALSE) %>%
+      formatRound(columns = c('a', 'b', 'c', 'd', 'e', 'res'), digits = 3)
+  #  browser()
   })
 
-  observeEvent(input$adv_var_calc, {
+  observeEvent({input$pcnt},
+               {status("Needs recalculation")})
+
+  output$basic_var_table <- DT::renderDataTable({out_base()})
+
+  output$status <- renderText({status()})
+
+  out_adv <- eventReactive(input$adv_var_calc,{
+    df4 <- original_data()
+    # calculate and aggregate data
     req(input$pcnt)
-    req(input$adv_var_calc)
-    output$adv_var_table <- DT::renderDataTable({
-      # load table for display
-      df4 <- original_data()
-      # calculate and aggregate data
-      u_value <- input$u_value
-      df4 <- AnGil::advanced_variant_calc(df4, u_value)
-      DT::datatable(df4,
-                    colnames = c("Column A",
-                                 "Column B",
-                                 "Column C",
-                                 "Column D",
-                                 "Column E",
-                                 "Aggregation"),
-                    filter = 'top',
-                    options = list(
-                      lengthMenu = list(c(5, 15, -1), c('5', '15', 'All')),
-                      pageLength = 5),
-                    rownames = FALSE) %>%
-        formatRound(columns = c('a', 'b', 'c', 'd', 'e', 'res'), digits = 3)
-    })
+    req(input$u_value)
+    pcnt <- input$pcnt
+    u_value <- input$u_value
+    df4 <- AnGil::advanced_variant_calc(df4, pcnt, u_value)
+    DT::datatable(df4,
+                  colnames = c("Column A",
+                               "Column B",
+                               "Column C",
+                               "Column D",
+                               "Column E",
+                               "Aggregation"),
+                  filter = 'top',
+                  options = list(
+                    lengthMenu = list(c(5, 15, -1), c('5', '15', 'All')),
+                    pageLength = 5),
+                  rownames = FALSE) %>%
+      formatRound(columns = c('a', 'b', 'c', 'd', 'e', 'res'), digits = 3)
   })
+
+  observeEvent({input$u_value},
+               {status("Needs recalculation")})
+
+  output$adv_var_table <- DT::renderDataTable({out_adv()})
+
 }

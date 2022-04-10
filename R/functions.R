@@ -26,18 +26,19 @@ calculate <- function (data) {
 #'
 #' @param data - dataframe used in the calculation
 #' @param pcnt - the percentage parameter
+#' @param u_value - the user-defined parameter
 #'
 #' @return data - dataframe with the basic_variant calc
 #' @export
 #'
-basic_variant_calc <- function (data, pcnt) {
+basic_variant_calc <- function (data, pcnt, u_value) {
   if (is.null(data)) stop("data parameter missing")
   if (is.null(pcnt)) stop("percentage parameter missing")
   if (!"data.frame" %in% class(data)) stop("data parameter is not data.frame")
 
   # perform basic variant calculation
   data <-
-    data %>% dplyr::mutate(dplyr::across(a:e, ~ .x * pcnt/100))
+    data %>% dplyr::mutate(dplyr::across(a:e, ~ .x * pcnt/100 * u_value))
 
   # re-calculate result column
   data <-
@@ -51,19 +52,20 @@ basic_variant_calc <- function (data, pcnt) {
 #' This function the original value with user-defined value
 #'
 #' @param data - dataframe used in the calculation
+#' @param pcnt - the percentage parameter
 #' @param u_value - the user-defined parameter
 #'
 #' @return data - dataframe with the advanced variant calc
 #' @export
 #'
-advanced_variant_calc <- function (data, u_value) {
+advanced_variant_calc <- function (data, pcnt, u_value) {
   if (is.null(data)) stop("data parameter missing")
   if (is.null(u_value)) stop("user value parameter missing")
   if (!"data.frame" %in% class(data)) stop("data parameter is not data.frame")
 
   # perform advanced variant calculation
   data <-
-    data %>% dplyr::mutate(dplyr::across(c(a:e), ~ replace(. , . > 0 , u_value)))
+    data %>% dplyr::mutate(dplyr::across(c(a:e), ~ replace(. , . > 0 , pcnt/100 * u_value)))
 
   # re-calculate result column
   data <-

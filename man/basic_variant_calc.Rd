@@ -4,7 +4,7 @@
 \alias{basic_variant_calc}
 \title{Basic variant calculate}
 \usage{
-basic_variant_calc(data, pcnt)
+basic_variant_calc(data, pcnt, u_value)
 }
 \arguments{
 \item{data}{\itemize{
@@ -13,6 +13,10 @@ basic_variant_calc(data, pcnt)
 
 \item{pcnt}{\itemize{
 \item the percentage parameter
+}}
+
+\item{u_value}{\itemize{
+\item the user-defined parameter
 }}
 }
 \value{

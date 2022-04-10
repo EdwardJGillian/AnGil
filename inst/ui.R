@@ -45,6 +45,7 @@ ui <- fluidPage(title = "Analytics - Aggregation",
                                                    style = "color: #fff; background-color: #337ab7; border-color: #2e6da4"),
                                                    DT::dataTableOutput("basic_var_table")),
                                       ),
+                            textOutput("status")
                               ),
                             tabsetPanel(type = "pills",
                               tabPanel("Advanced Variant", icon = icon("object-group"),

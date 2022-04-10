@@ -4,11 +4,15 @@
 \alias{advanced_variant_calc}
 \title{Advanced variant calculate}
 \usage{
-advanced_variant_calc(data, u_value)
+advanced_variant_calc(data, pcnt, u_value)
 }
 \arguments{
 \item{data}{\itemize{
 \item dataframe used in the calculation
+}}
+
+\item{pcnt}{\itemize{
+\item the percentage parameter
 }}
 
 \item{u_value}{\itemize{
