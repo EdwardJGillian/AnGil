@@ -39,8 +39,10 @@ start by opening the package. When you open the package, it loads the
 data, calculates the aggregated data, and displays in the `Original
 Numeric Data` tab.
 
-![](man/figures/original_data.png) At the same time, the `Basic Variant`
-tab and the `Advanced Variant` tab are populated.
+![](man/figures/original_data.png)
+
+At the same time, the `Basic Variant` tab and the `Advanced Variant` tab
+are populated.
 
 ![](man/figures/variant_tabset.png)
 

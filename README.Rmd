@@ -32,6 +32,7 @@ You can run `AnGil` by opening either `ui.R` or `server.R` in the `AnGil/inst` f
 This is a basic example of the workflow with package functions. We will start by opening the package. When you open the package, it loads the data, calculates the aggregated data, and displays in the `Original Numeric Data` tab. 
 
 ![](man/figures/original_data.png){width=100%}
+
 At the same time,  the `Basic Variant` tab and the `Advanced Variant` tab are populated.
 
 ![](man/figures/variant_tabset.png){width=100%}
