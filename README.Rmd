@@ -34,7 +34,7 @@ This is a basic example of the workflow with package functions. We will start by
 ![](man/figures/original_data.png){width=100%}
 At the same time,  the `Basic Variant` tab and the `Advanced Variant` tab are populated.
 
-![](man/figures/all_tabs.png){width=100%}
+![](man/figures/variant_tabset.png){width=100%}
 
 Then, you can enter a percentage figure in `Percentage` field and click `Basic Variant Calculation` button.
 This populates the `basic variant` view:

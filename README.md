@@ -42,7 +42,7 @@ Numeric Data` tab.
 ![](man/figures/original_data.png) At the same time, the `Basic Variant`
 tab and the `Advanced Variant` tab are populated.
 
-![](man/figures/all_tabs.png)
+![](man/figures/variant_tabset.png)
 
 Then, you can enter a percentage figure in `Percentage` field and click
 `Basic Variant Calculation` button. This populates the `basic variant`

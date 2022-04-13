@@ -38,23 +38,23 @@ ui <- fluidPage(title = "Analytics - Aggregation",
                                      shinycssloaders::withSpinner(
                                       DT::dataTableOutput("data_table")),
                                       ),
-                            tabsetPanel(type = "pills",
-                              tabPanel("Basic Variant", icon = icon("object-group"),
-                                      numericInput("pcnt","Percentage", value = 1, min = 1),
-                                      actionButton('b_var_calc' ,'Basic Variant Calculate', icon("paper-plane"),
-                                                   style = "color: #fff; background-color: #337ab7; border-color: #2e6da4"),
-                                                   DT::dataTableOutput("basic_var_table")),
-                                      ),
-                            textOutput("status")
-                              ),
-                            tabsetPanel(type = "pills",
-                              tabPanel("Advanced Variant", icon = icon("object-group"),
-                                    numericInput("u_value","User defined value", value = 1, min = 1),
-                                    actionButton('adv_var_calc' ,'Advanced Variant Calculate', icon("paper-plane"),
-                                                  style = "color: #fff; background-color: #337ab7; border-color: #2e6da4"),
-                                                  DT::dataTableOutput("adv_var_table")),
+                            tabPanel("Variant Calculation", icon = icon("calculator"),
+                                     tabsetPanel(type = "pills",
+                                                 tabPanel("Basic Variant", icon = icon("percent"),
+                                                          numericInput("pcnt","Percentage", value = 1, min = 1),
+                                                          actionButton('b_var_calc' ,'Basic Variant Calculate', icon("paper-plane"),
+                                                                       style = "color: #fff; background-color: #337ab7; border-color: #2e6da4"),
+                                                          DT::dataTableOutput("basic_var_table")),
+                                                 tabPanel("Advanced Variant", icon = icon("pencil-alt"),
+                                                          numericInput("u_value","User defined value", value = 1, min = 1),
+                                                          actionButton('adv_var_calc' ,'Advanced Variant Calculate', icon("paper-plane"),
+                                                                       style = "color: #fff; background-color: #337ab7; border-color: #2e6da4"),
+                                                          DT::dataTableOutput("adv_var_table")),
 
+                                                 )
+                                     ),
                             )
+
 
 )
 
